@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% extends 'main.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    {% block content %}
+    <h1>Branch page:</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Branch ID</th>
+                <th>Branch Name</th>
+                <th>Branch Address</th>
+                <th>Date-Opened</th>
+                <th>Branch Revenue</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for brn in branch %}
+            <tr>
+                <td>{{brn.branch_id}}</td>
+                <td>{{brn.branch_name}}</td>
+                <td>{{brn.branch_address}}</td>
+                <td>{{brn.packaging_charge}}</td>
+                <td>{{brn.date_opened}}</td>
+                <td>{{brn.branch_revenue}}</td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+    {% endblock content %}
+
+</body>
+</html>

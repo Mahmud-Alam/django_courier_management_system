@@ -11,6 +11,30 @@
     
     {% block content %}
     <h1>Category page:</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Weight</th>
+                <th>Packaging Charge</th>
+                <th>Delivery Charge</th>
+                <th>VAT(%)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cat in category %}
+            <tr>
+                <td>{{cat.category_name}}</td>
+                <td>{{cat.category_description}}</td>
+                <td>{{cat.category_weight}}</td>
+                <td>{{cat.packaging_charge}}</td>
+                <td>{{cat.delivery_charge}}</td>
+                <td>{{cat.category_vat}}</td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
     {% endblock content %}
 
 </body>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+{% extends 'main.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    {% block content %}
+    <h1>Order List:</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Customer Name</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Gender</th>
+                <th>Branch Name</th>
+                <th>Category Name</th>
+                <th>Quantity</th>
+                <th>Order Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in order %}
+            <tr>
+                <td>{{i.order_id}}</td>
+                <td>{{i.customer_name}}</td>
+                <td>{{i.customer_phone}}</td>
+                <td>{{i.customer_address}}</td>
+                <td>{{i.customer_gender}}</td>
+                <td>{{i.branch_name}}</td>
+                <td>{{i.category_name}}</td>
+                <td>{{i.quantity}}</td>
+                <td>{{i.order_date}}</td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+
+
+    <h1>Delivery List:</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Recipient Name</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Gender</th>
+                <th>Order Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in delivery %}
+            <tr>
+                <td>{{i.order_id}}</td>
+                <td>{{i.recipient_name}}</td>
+                <td>{{i.recipient_phone}}</td>
+                <td>{{i.recipient_address}}</td>
+                <td>{{i.recipient_gender}}</td>
+                <td>{{i.delivery_date}}</td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+
+
+    <h1>Billing List:</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Total Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in billing %}
+            <tr>
+                <td>{{i.order_id}}</td>
+                <td>{{i.total_amount}}</td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+
+    {% endblock content %}
+
+</body>
+</html>

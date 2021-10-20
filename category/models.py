@@ -61,7 +61,7 @@ class Delivery(models.Model):
     )
 
     delivery_id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True,  editable=False)
-    order_id = models.ForeignKey(Order, on_delete=models.CASCADE)
+    order_id = models.OneToOneField(Order, on_delete=models.CASCADE)
     recipient_name = models.CharField(max_length=200)
     recipient_phone = models.CharField(max_length=200, null=True,blank=True, default='+880')
     recipient_address = models.TextField(null=True,blank=True)
@@ -74,7 +74,7 @@ class Delivery(models.Model):
 
 class Billing(models.Model):
     billing_id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True,  editable=False)
-    order_id = models.ForeignKey(Order, on_delete=models.CASCADE)
+    order_id = models.OneToOneField(Order, on_delete=models.CASCADE)
     total_amount = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):

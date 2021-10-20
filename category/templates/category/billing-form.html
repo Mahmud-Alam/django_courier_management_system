@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% extends 'main.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    {% block content %}
+    <h1>Delivery Form:</h1><hr>
+    <form action="" method="POST" style="width: 100%; display: flex; justify-content: space-evenly;">
+        {% csrf_token %}
+        <div>
+            <h2>Order-Id : {{currId}}</h2>
+            {{form1.as_p}}
+        </div>
+        <div>
+            <h2>Billing Details:</h2>
+            <h4>Quantity        : {{quantity}}</h4>
+            <h4>Packaging Charge: {{packCharge}}</h4>
+            <h4>Delivery Charge : {{packCharge}}</h4><hr>
+            <h4>Sum Amount      : {{amount}}</h4>
+            <h4>% VAT           : {{vat}}%</h4><hr>
+            <h4>Total Amount    : {{total_amount}}</h4>
+            {{form2.as_p}}
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+    
+    {% endblock content %}
+
+</body>
+</html>

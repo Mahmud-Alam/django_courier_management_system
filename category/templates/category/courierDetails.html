@@ -23,6 +23,8 @@
                 <th>Category Name</th>
                 <th>Quantity</th>
                 <th>Order Date</th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -37,13 +39,15 @@
                 <td>{{i.category_name}}</td>
                 <td>{{i.quantity}}</td>
                 <td>{{i.order_date}}</td>
+                <td><a href="{% url 'update-order-form' i.order_id%}">Edit</a></td>
+                <td><a href="{% url 'delete-order-form' i.order_id%}">Delete</a></td>
             </tr>
             {%endfor%}
         </tbody>
     </table>
 
 
-    <h1>Delivery List:</h1>
+    <!-- <h1>Delivery List:</h1>
     <table>
         <thead>
             <tr>
@@ -67,7 +71,7 @@
             </tr>
             {%endfor%}
         </tbody>
-    </table>
+    </table> -->
 
 
     <h1>Billing List:</h1>
@@ -86,8 +90,13 @@
             </tr>
             {%endfor%}
         </tbody>
+        <tbody>
+            <tr>
+                <td>Sum amount: </td>
+                <td>{{sumAmount}}</td>
+            </tr>
+        </tbody>
     </table>
-
     {% endblock content %}
 
 </body>

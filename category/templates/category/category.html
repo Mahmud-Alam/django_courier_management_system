@@ -20,6 +20,7 @@
                 <th>Packaging Charge</th>
                 <th>Delivery Charge</th>
                 <th>VAT(%)</th>
+                <th>Image</th>
             </tr>
         </thead>
         <tbody>
@@ -31,6 +32,7 @@
                 <td>{{cat.packaging_charge}}</td>
                 <td>{{cat.delivery_charge}}</td>
                 <td>{{cat.category_vat}}</td>
+                <td><img style="max-width: 500px" src="{{cat.imageURL}}" alt=""></td>
             </tr>
             {%endfor%}
         </tbody>

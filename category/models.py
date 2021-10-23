@@ -19,7 +19,7 @@ class Category(models.Model):
     category_id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
     category_name = models.CharField(max_length=200, unique=True)
     category_description = models.TextField(null=True,blank=True)
-    #category_image =
+    category_image = models.ImageField(null=True, blank=True, default='default.jpg')
     category_quantity = models.DecimalField(max_digits=10, decimal_places=2, default=1)
     packaging_charge = models.DecimalField(max_digits=10, decimal_places=2)
     delivery_charge = models.DecimalField(max_digits=10, decimal_places=2)
@@ -28,6 +28,14 @@ class Category(models.Model):
 
     def __str__(self):
         return self.category_name
+
+    @property
+    def imageURL(self):
+        try:
+            img = self.category_image.url
+        except:
+            img = ''
+        return img
 
 
 class Order(models.Model):

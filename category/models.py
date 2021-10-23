@@ -52,7 +52,7 @@ class Order(models.Model):
     customer_address = models.TextField(null=True,blank=True)
     customer_gender = models.CharField(max_length=50,choices=GENDER_TYPE, null=True,blank=True)
     branch_name = models.ForeignKey(Branch, on_delete=models.CASCADE)
-    category_name = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     quantity = models.DecimalField(max_digits=10, decimal_places=2, default=1)
     order_date = models.DateField(("Date"), default=date.today)
     recipient_name = models.CharField(max_length=200)

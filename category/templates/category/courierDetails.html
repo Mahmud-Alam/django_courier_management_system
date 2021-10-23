@@ -10,93 +10,91 @@
 <body>
     
     {% block content %}
-    <h1>Order List:</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Order ID</th>
-                <th>Customer Name</th>
-                <th>Phone</th>
-                <th>Address</th>
-                <th>Gender</th>
-                <th>Branch Name</th>
-                <th>Category Name</th>
-                <th>Quantity</th>
-                <th>Order Date</th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for i in order %}
-            <tr>
-                <td>{{i.order_id}}</td>
-                <td>{{i.customer_name}}</td>
-                <td>{{i.customer_phone}}</td>
-                <td>{{i.customer_address}}</td>
-                <td>{{i.customer_gender}}</td>
-                <td>{{i.branch_name}}</td>
-                <td>{{i.category_name}}</td>
-                <td>{{i.quantity}}</td>
-                <td>{{i.order_date}}</td>
-                <td><a href="{% url 'update-order-form' i.order_id%}">Edit</a></td>
-                <td><a href="{% url 'delete-order-form' i.order_id%}">Delete</a></td>
-            </tr>
-            {%endfor%}
-        </tbody>
-    </table>
+    <div class="container"><br><br><br><br><br>
+        <h1>Order List:</h1>
+        <table class="table">
+            <thead class="table-title">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Branch</th>
+                    <th>Category</th>
+                    <th>Quantity</th>
+                    <th>Date</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in order %}
+                <tr>
+                    <td>{{i.order_id}}</td>
+                    <td>{{i.customer_name}}</td>
+                    <td>{{i.branch_name}}</td>
+                    <td>{{i.category}}</td>
+                    <td>{{i.quantity}}</td>
+                    <td>{{i.order_date}}</td>
+                    <td><a href="">View Details</a></td>
+                    <td><a href="{% url 'update-order-form' i.order_id%}">Edit</a></td>
+                    <td><a href="{% url 'delete-order-form' i.order_id%}">Delete</a></td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
 
 
-    <!-- <h1>Delivery List:</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Order ID</th>
-                <th>Recipient Name</th>
-                <th>Phone</th>
-                <th>Address</th>
-                <th>Gender</th>
-                <th>Order Date</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for i in delivery %}
-            <tr>
-                <td>{{i.order_id}}</td>
-                <td>{{i.recipient_name}}</td>
-                <td>{{i.recipient_phone}}</td>
-                <td>{{i.recipient_address}}</td>
-                <td>{{i.recipient_gender}}</td>
-                <td>{{i.delivery_date}}</td>
-            </tr>
-            {%endfor%}
-        </tbody>
-    </table> -->
+        <!-- <h1>Delivery List:</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Recipient Name</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Gender</th>
+                    <th>Order Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in delivery %}
+                <tr>
+                    <td>{{i.order_id}}</td>
+                    <td>{{i.recipient_name}}</td>
+                    <td>{{i.recipient_phone}}</td>
+                    <td>{{i.recipient_address}}</td>
+                    <td>{{i.recipient_gender}}</td>
+                    <td>{{i.delivery_date}}</td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table> -->
 
-
-    <h1>Billing List:</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Order ID</th>
-                <th>Total Amount</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for i in billing %}
-            <tr>
-                <td>{{i.order_id}}</td>
-                <td>{{i.total_amount}}</td>
-            </tr>
-            {%endfor%}
-        </tbody>
-        <tbody>
-            <tr>
-                <td>Sum amount: </td>
-                <td>{{sumAmount}}</td>
-            </tr>
-        </tbody>
-    </table>
+        <br><br>
+        <h1>Billing List:</h1>
+        <table class="table">
+            <thead class="table-title">
+                <tr>
+                    <th>Order ID</th>
+                    <th>Total Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in billing %}
+                <tr>
+                    <td>{{i.order_id}}</td>
+                    <td>{{i.total_amount}}</td>
+                </tr>
+                {%endfor%}
+            </tbody>
+            <tbody>
+                <tr>
+                    <td>Sum amount: </td>
+                    <td>{{sumAmount}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     {% endblock content %}
 
 </body>

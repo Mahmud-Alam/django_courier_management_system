@@ -10,7 +10,8 @@
 <body>
     
     {% block content %}
-    <h1>Category page:</h1>
+
+    <!-- <h1>Category page:</h1>
     <table>
         <thead>
             <tr>
@@ -36,7 +37,66 @@
             </tr>
             {%endfor%}
         </tbody>
-    </table>
+    </table> -->
+
+    <!-- Main Section -->
+    <main class="projects">
+        <section class="hero-section text-center">
+        <div class="container container--narrow">
+            <div class="hero-section__box">
+            <h2>Search for <span>Category</span></h2>
+            </div>
+
+            <div class="hero-section__search">
+            <form class="form" action="#" method="get">
+                <div class="form__field">
+                <label for="formInput#search">Search By Category </label>
+                <input class="input input--text" id="formInput#search" type="text" name="text"
+                    placeholder="Search by Category Name" />
+                </div>
+
+                <input class="btn btn--sub btn--lg" type="submit" value="Search" />
+            </form>
+            </div>
+        </div>
+        </section>
+        <!-- Search Result: DevList -->
+        <section class="projectsList">
+            <div class="container">
+                <div class="grid grid--three">
+                    
+                    {% for cat in category %}
+                    <div class="column">
+                        <div class="card project">
+                            <a href="#" class="card-a project">
+                                <img class="project__thumbnail" src="{{cat.imageURL}}" alt="project thumbnail" />
+                                <div class="card__body">
+                                <h3 class="project__title">{{cat.category_name}}</h3>
+                                <!-- <p><a class="project__author" href="profile.html">By Dennis Ivanov</a></p> -->
+                                <p class="project--rating">{{cat.category_description}}</p>
+                                <h4><span style="font-weight: bold;">Standard Amount: </span> {{cat.category_quantity}}</h4>
+                                <h4><span style="font-weight: bold;">Packaging Charge: </span> {{cat.packaging_charge}}</h4>
+                                <h4><span style="font-weight: bold;">Packaging Charge: </span> {{cat.delivery_charge}}</h4>
+                                <h4><span style="font-weight: bold;">% Vat: </span> {{cat.category_vat}}%</h4>
+                                <!-- <div class="project__tags">
+                                    {% for tag in i.tags.all %}
+                                    <span class="tag tag--pill tag--main">
+                                        <small>{{tag.name}}</small>
+                                    </span>
+                                    {% endfor %}
+                                </div> -->
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    {%endfor%}
+
+                    
+                </div>
+            </div>
+        </section>
+    </main>
+
     {% endblock content %}
 
 </body>

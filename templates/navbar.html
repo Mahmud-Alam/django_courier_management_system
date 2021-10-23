@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,13 +8,38 @@
     <title>Document</title>
 </head>
 <body>
-    <div>
+    <!-- <div>
         <h2>Logo</h2>
         <a href="/">Home</a>
         <a href="{%url 'branch' %}">Branch</a>
         <a href="{%url 'category' %}">Category</a>
         <a href="{%url 'courier-details' %}">Courier Details</a>
         <a href="{%url 'order-form' %}">Create Order</a>
-    </div>
+    </div> -->
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container container--narrow">
+        <a href="/" class="header__logo">
+            <img src='{% static "images/logo.png" %}' alt="DevSearch Logo" />
+        </a>
+        <nav class="header__nav">
+            <input type="checkbox" id="responsive-menu" />
+            <label for="responsive-menu" class="toggle-menu">
+            <span>Menu</span>
+            <div class="toggle-menu__lines"></div>
+            </label>
+            <ul class="header__menu">
+                <li class="header__menuItem"><a href="/">Home</a></li>
+                <li class="header__menuItem"><a href="{%url 'branch' %}">Branch</a></li>
+                <li class="header__menuItem"><a href="{%url 'category' %}">Category</a></li>
+                <li class="header__menuItem"><a href="{%url 'courier-details' %}">Courier Details</a></li>
+                <!-- <li class="header__menuItem"><a href="{%url 'order-form' %}">Create Order</a></li>
+                <li class="header__menuItem"><a href="login.html" class="btn btn--sub">Login/Sign Up</a></li> -->
+                <li class="header__menuItem"><a href="{%url 'order-form' %}" class="btn btn--sub">Create Order</a></li>
+            </ul>
+        </nav>
+        </div>
+    </header>
 </body>
 </html>

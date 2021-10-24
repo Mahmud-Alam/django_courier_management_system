@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% extends 'main.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    {% block content %}
+
+    <!-- Main Section -->
+    <main class="projects">
+        <section class="top-padding">
+            <div class="container">
+                <div class="grid grid--three">
+                    <div class="column">
+                        <div class="card project">
+                            <a href="#" class="card-a project">
+                                <img class="project__thumbnail" src="{{customerImageURL}}" alt="project thumbnail" />
+                                <div class="card__body">
+                                    <h3 class="project__title">{{customer_name}}</h3>
+                                    <!-- <p><a class="project__author" href="profile.html">By Dennis Ivanov</a></p> -->
+                                    <h4>Customer Address:</h4>
+                                    <p class="project--rating">{{customer_address}}</p>
+                                    <h4><span style="font-weight: bold;">Phone      : </span> {{customer_phone}}</h4>
+                                    <h4><span style="font-weight: bold;">Gender     : </span> {{customer_gender}}</h4>
+                                    <h4><span style="font-weight: bold;">Branch     : </span> {{branch_name}}</h4>
+                                    <h4><span style="font-weight: bold;">Category   : </span> {{category}}</h4>
+                                    <h4><span style="font-weight: bold;">Quantity   : </span> {{quantity}}</h4>
+                                    <h4><span style="font-weight: bold;">Order Date : </span> {{order_date}}</h4>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div class="card project">
+                            <a href="#" class="card-a project">
+                                <img class="project__thumbnail" src="{{recipientImageURL}}" alt="project thumbnail" />
+                                <div class="card__body">
+                                    <h3 class="project__title">{{customer_name}}</h3>
+                                    <!-- <p><a class="project__author" href="profile.html">By Dennis Ivanov</a></p> -->
+                                    <h4>Customer Address:</h4>
+                                    <p class="project--rating">{{customer_address}}</p>
+                                    <h4><span style="font-weight: bold;">Phone      : </span> {{customer_phone}}</h4>
+                                    <h4><span style="font-weight: bold;">Gender     : </span> {{customer_gender}}</h4>
+                                    <h4><span style="font-weight: bold;">Branch     : </span> {{branch_name}}</h4>
+                                    <h4><span style="font-weight: bold;">Category   : </span> {{category}}</h4>
+                                    <h4><span style="font-weight: bold;">Quantity   : </span> {{quantity}}</h4>
+                                    <h4><span style="font-weight: bold;">Order Date : </span> {{order_date}}</h4>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+    </main>
+
+    {% endblock content %}
+
+</body>
+</html>

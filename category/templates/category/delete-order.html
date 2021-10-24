@@ -10,13 +10,15 @@
 <body>
     
     {% block content %}
-    <h2>Delete Order : {{nextId}}</h2><hr>
-    <form action="" method="POST">
-        {% csrf_token %}
-        <p>Are you sure you want to delete "{{object}}"?</p>
-        <a href="{% url 'courier-details' %}">Go back</a>
-        <input type="submit" value="Submit">
-    </form>
+    <div class="container top-padding">
+        <h2>Delete Order : {{nextId}}</h2><hr>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <p>Are you sure you want to delete "{{object}}"?</p>
+            <a href="{% url 'courier-details' %}">Go back</a>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
     
     {% endblock content %}
 

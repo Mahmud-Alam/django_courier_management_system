@@ -10,24 +10,26 @@
 <body>
     
     {% block content %}
-    <h1>Billing Details:</h1><hr>
-    <h3>Order-Id : {{currId}}</h3>
-    <form action="" method="POST" style="width: 100%; display: flex; justify-content: space-evenly;">
-        {% csrf_token %}
-        <div>
-            <h4>Quantity        : {{quantity}}</h4>
-            <h4>Packaging Charge: {{packCharge}}</h4>
-            <h4>Delivery Charge : {{delCharge}}</h4><hr>
-            <h4>Sum Amount      : {{amount}}</h4>
-            <h4>% VAT           : {{vat}}%</h4><hr>
-            <h4>Total Amount    : {{total_amount}}</h4>
+    <div class="container top-padding">
+        <h1>Billing Details:</h1><hr>
+        <h3>Order-Id : {{currId}}</h3>
+        <form action="" method="POST" style="width: 100%; display: flex; justify-content: space-between;">
+            {% csrf_token %}
+            <div>
+                <h4>Quantity        : {{quantity}}</h4>
+                <h4>Packaging Charge: {{packCharge}}</h4>
+                <h4>Delivery Charge : {{delCharge}}</h4><hr>
+                <h4>Sum Amount      : {{amount}}</h4>
+                <h4>% VAT           : {{vat}}%</h4><hr>
+                <h4>Total Amount    : {{total_amount}}</h4>
+            </div>
+            <div>
+                <h3>Billing Details:</h3>
+                {{form.as_p}}
+                <input type="submit" value="Submit">
+            </div>
+        </form>
         </div>
-        <div>
-            <h3>Billing Details:</h3>
-            {{form.as_p}}
-            <input type="submit" value="Submit">
-        </div>
-    </form>
     
     {% endblock content %}
 

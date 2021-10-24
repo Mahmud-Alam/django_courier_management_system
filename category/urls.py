@@ -7,6 +7,7 @@ urlpatterns = [
     path('category/', views.category, name='category'),
     path('courier-details/', views.courierDetails, name='courier-details'),
     path('order-form/', views.createOrder, name='order-form'),
+    path('view-order-details/<str:pk>/', views.viewOrderDetails, name='view-order-details'),
     path('update-order-form/<str:pk>/', views.updateOrder, name='update-order-form'),
     path('delete-order-form/<str:pk>/', views.deleteOrder, name='delete-order-form'),
     path('billing-form/', views.createBilling, name='billing-form'),

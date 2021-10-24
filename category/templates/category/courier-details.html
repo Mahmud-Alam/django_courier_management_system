@@ -10,7 +10,7 @@
 <body>
     
     {% block content %}
-    <div class="container"><br><br><br><br><br>
+    <div class="container top-padding">
         <h1>Order List:</h1>
         <table class="table">
             <thead class="table-title">
@@ -35,7 +35,7 @@
                     <td>{{i.category}}</td>
                     <td>{{i.quantity}}</td>
                     <td>{{i.order_date}}</td>
-                    <td><a href="">View Details</a></td>
+                    <td><a href="{% url 'view-order-details' i.order_id%}">View Details</a></td>
                     <td><a href="{% url 'update-order-form' i.order_id%}">Edit</a></td>
                     <td><a href="{% url 'delete-order-form' i.order_id%}">Delete</a></td>
                 </tr>

@@ -1,4 +1,4 @@
-*{
+body{
   margin: 0;
   padding: 0;
 }
@@ -10,6 +10,10 @@
 .btn--sub {
   /* background-color: var(--color-sub-light); */
   background-color: #340e21;
+}
+
+.top-padding{
+  padding-top: 100px;
 }
 
 .card {
@@ -191,7 +195,7 @@ img {
 ========================*/
 
 .hero-section {
-  height: 60vh !important;
+  height: 50vh !important;
   display: flex;
   align-items: center;
   background-color: var(--color-sub);

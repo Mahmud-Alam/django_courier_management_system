@@ -24,7 +24,7 @@ def courierDetails(req):
     for i in billing:
         sumAmount += i.total_amount
     context = {'order':order,'billing':billing, 'sumAmount':sumAmount}
-    return render(req,'category/courierDetails.html',context)
+    return render(req,'category/courier-details.html',context)
 
 def createOrder(req):
     form = OrderForm()
@@ -41,6 +41,13 @@ def createOrder(req):
 
     context = {'form':form,'nextId':nextId}
     return render(req, 'category/order-form.html',context)
+
+def viewOrderDetails(req, pk):
+    order = Order.objects.get(order_id=pk)
+    billing = Billing.objects.get(order_id=pk)
+
+    context = {'order':order, 'billing':billing}
+    return render(req, 'category/order-details.html',context)
 
 
 def updateOrder(req, pk):
@@ -72,7 +79,7 @@ def createBilling(req):
     if Order.objects.exists():
         currId = str(Order.objects.latest('order_id'))
     
-    category = Order.objects.get(order_id=currId).category_name
+    category = Order.objects.get(order_id=currId).category
     packCharge = category.packaging_charge
     delCharge = category.delivery_charge
     quantity = Order.objects.get(order_id=currId).quantity
@@ -95,7 +102,7 @@ def updateBilling(req, pk):
     billing = Billing.objects.get(order_id=pk)
     form = BillingForm(instance=billing)
 
-    category = Order.objects.get(order_id=pk).category_name
+    category = Order.objects.get(order_id=pk).category
     packCharge = category.packaging_charge
     delCharge = category.delivery_charge
     quantity = Order.objects.get(order_id=pk).quantity

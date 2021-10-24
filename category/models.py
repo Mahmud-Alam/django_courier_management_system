@@ -48,6 +48,7 @@ class Order(models.Model):
 
     order_id = models.CharField(max_length=20, unique=True, primary_key=True, default='Order-')
     customer_name = models.CharField(max_length=200)
+    customer_image = models.ImageField(null=True, blank=True, default='default.jpg')
     customer_phone = models.CharField(max_length=200, null=True,blank=True, default='+880')
     customer_address = models.TextField(null=True,blank=True)
     customer_gender = models.CharField(max_length=50,choices=GENDER_TYPE, null=True,blank=True)
@@ -56,6 +57,7 @@ class Order(models.Model):
     quantity = models.DecimalField(max_digits=10, decimal_places=2, default=1)
     order_date = models.DateField(("Date"), default=date.today)
     recipient_name = models.CharField(max_length=200)
+    recipient_image = models.ImageField(null=True, blank=True, default='default.jpg')
     recipient_phone = models.CharField(max_length=200, null=True,blank=True, default='+880')
     recipient_address = models.TextField(null=True,blank=True)
     recipient_gender = models.CharField(max_length=50,choices=GENDER_TYPE, null=True,blank=True)
@@ -63,6 +65,22 @@ class Order(models.Model):
     
     def __str__(self):
         return self.order_id
+    
+    @property
+    def customerImageURL(self):
+        try:
+            img1 = self.customer_image.url
+        except:
+            img1 = ''
+        return img1
+    
+    @property
+    def recipientImageURL(self):
+        try:
+            img2 = self.recipient_image.url
+        except:
+            img2 = ''
+        return img2
 
 
 class Billing(models.Model):

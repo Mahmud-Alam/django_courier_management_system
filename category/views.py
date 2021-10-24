@@ -46,7 +46,15 @@ def viewOrderDetails(req, pk):
     order = Order.objects.get(order_id=pk)
     billing = Billing.objects.get(order_id=pk)
 
-    context = {'order':order, 'billing':billing}
+    category = Order.objects.get(order_id=pk).category
+    packCharge = category.packaging_charge
+    delCharge = category.delivery_charge
+    quantity = Order.objects.get(order_id=pk).quantity
+    amount = float(packCharge+delCharge)*float(quantity)
+    vat = category.category_vat
+    total_amount = amount+amount*float(vat)*.01
+
+    context = {'order':order,'billing':billing,'packCharge':packCharge*quantity,'delCharge':delCharge*quantity,'quantity':quantity,'amount':amount,'vat':vat,'total_amount':total_amount}
     return render(req, 'category/order-details.html',context)
 
 

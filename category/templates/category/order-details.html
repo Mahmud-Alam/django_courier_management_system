@@ -13,49 +13,69 @@
 
     <!-- Main Section -->
     <main class="projects">
-        <section class="top-padding">
+        <section class="top-padding-max">
             <div class="container">
+                <h2 style="text-align: center;">{{order.order_id}} Details</h2><hr><br><br>
                 <div class="grid grid--three">
                     <div class="column">
+                        <h2 style="text-align: center;">Customer Info</h2>
                         <div class="card project">
                             <a href="#" class="card-a project">
-                                <img class="project__thumbnail" src="{{customerImageURL}}" alt="project thumbnail" />
+                                <img class="project__thumbnail" src="{{order.customerImageURL}}" alt="project thumbnail" />
                                 <div class="card__body">
-                                    <h3 class="project__title">{{customer_name}}</h3>
+                                    <h3 class="project__title">{{order.customer_name}}</h3>
                                     <!-- <p><a class="project__author" href="profile.html">By Dennis Ivanov</a></p> -->
-                                    <h4>Customer Address:</h4>
-                                    <p class="project--rating">{{customer_address}}</p>
-                                    <h4><span style="font-weight: bold;">Phone      : </span> {{customer_phone}}</h4>
-                                    <h4><span style="font-weight: bold;">Gender     : </span> {{customer_gender}}</h4>
-                                    <h4><span style="font-weight: bold;">Branch     : </span> {{branch_name}}</h4>
-                                    <h4><span style="font-weight: bold;">Category   : </span> {{category}}</h4>
-                                    <h4><span style="font-weight: bold;">Quantity   : </span> {{quantity}}</h4>
-                                    <h4><span style="font-weight: bold;">Order Date : </span> {{order_date}}</h4>
+                                    <h4><span style="font-weight: bold;">Address    : </span> <span>{{order.customer_address}}</span></h4>
+                                    <h4><span style="font-weight: bold;">Phone      : </span> <span>{{order.customer_phone}}</span></h4>
+                                    <h4><span style="font-weight: bold;">Gender     : </span> <span>{{order.customer_gender}}</span></h4>
+                                    <h4><span style="font-weight: bold;">Order Date : </span> <span>{{order.order_date}}</span></h4>
                                 </div>
                             </a>
                         </div>
                     </div>
 
                     <div class="column">
+                        <h2  style="text-align: center;">Recipient Info</h2>
                         <div class="card project">
                             <a href="#" class="card-a project">
-                                <img class="project__thumbnail" src="{{recipientImageURL}}" alt="project thumbnail" />
+                                <img class="project__thumbnail" src="{{order.recipientImageURL}}" alt="project thumbnail" />
                                 <div class="card__body">
-                                    <h3 class="project__title">{{customer_name}}</h3>
-                                    <!-- <p><a class="project__author" href="profile.html">By Dennis Ivanov</a></p> -->
-                                    <h4>Customer Address:</h4>
-                                    <p class="project--rating">{{customer_address}}</p>
-                                    <h4><span style="font-weight: bold;">Phone      : </span> {{customer_phone}}</h4>
-                                    <h4><span style="font-weight: bold;">Gender     : </span> {{customer_gender}}</h4>
-                                    <h4><span style="font-weight: bold;">Branch     : </span> {{branch_name}}</h4>
-                                    <h4><span style="font-weight: bold;">Category   : </span> {{category}}</h4>
-                                    <h4><span style="font-weight: bold;">Quantity   : </span> {{quantity}}</h4>
-                                    <h4><span style="font-weight: bold;">Order Date : </span> {{order_date}}</h4>
+                                    <h3 class="project__title">{{order.recipient_name}}</h3>
+                                    <h4><span style="font-weight: bold;">Address    : </span> <span>{{order.recipient_address}}</span></h4>
+                                    <h4><span style="font-weight: bold;">Phone      : </span> <span>{{order.recipient_phone}}</span></h4>
+                                    <h4><span style="font-weight: bold;">Gender     : </span> <span>{{order.recipient_gender}}</span></h4>
+                                    <h4><span style="font-weight: bold;">Order Date : </span> <span>{{order.delivery_date}}</span></h4>
                                 </div>
                             </a>
                         </div>
                     </div>
                     
+                    <div class="column">
+                        <h2  style="text-align: center;">Billing Info</h2>
+                        <div class="card project">
+                            <a href="#" class="card-a project">
+                                <!-- <img class="project__thumbnail" src="{{order.recipientImageURL}}" alt="project thumbnail" /> -->
+                                <div class="card__body">
+                                    <h3 class="project__title" style="text-align: center;">
+                                        {% if billing.status == 'Paid'%} 
+                                        <span style="font-size: 60px ; font-weight: 900; color: lightgreen;">{{billing.status}}</span>
+                                        {% else %}
+                                        <span style="font-size: 60px; font-weight: 900; color: red;">{{billing.status}}</span>
+                                        {%endif%}
+                                    </h3>
+                                    <h4><span style="font-weight: bold;">Branch     : </span> <span>{{order.branch_name}}</span></h4>
+                                    <h4><span style="font-weight: bold;">Category   : </span> <span>{{order.category}}</span></h4>
+                                    <h4><span style="font-weight: bold;">Quantity   : </span> <span>{{order.quantity}}</span></h4>
+
+                                    <h4><span style="font-weight: bold;">Packaging Charge: </span> <span>{{packCharge}}</span></h4>
+                                    <h4><span style="font-weight: bold;">Delivery Charge: </span> <span>{{delCharge}}</span></h4><hr>
+                                    <h4><span style="font-weight: bold;">Sum Amount: </span> <span>{{amount}}</span></h4>
+                                    <h4><span style="font-weight: bold;">% VAT: </span> <span>{{vat}}%</span></h4><hr>
+                                    <h4><span style="font-weight: bold;">Total Amount: </span> <span>{{total_amount}}</span></h4>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

@@ -11,9 +11,9 @@
     
     {% block content %}
     <div class="container top-padding">
-        <h1>Branch page:</h1><br>
-        <table>
-            <thead>
+        <h1>Branch Info:</h1><br>
+        <table class="table">
+            <thead class="table-title">
                 <tr>
                     <th>Branch Name</th>
                     <th>Branch Address</th>
@@ -26,7 +26,6 @@
                 <tr>
                     <td>{{brn.branch_name}}</td>
                     <td>{{brn.branch_address}}</td>
-                    <td>{{brn.packaging_charge}}</td>
                     <td>{{brn.date_opened}}</td>
                     <td>{{brn.branch_revenue}}</td>
                 </tr>

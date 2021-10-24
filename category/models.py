@@ -69,24 +69,31 @@ class Order(models.Model):
     @property
     def customerImageURL(self):
         try:
-            img1 = self.customer_image.url
+            img = self.customer_image.url
         except:
-            img1 = ''
-        return img1
+            img = ''
+        return img
     
     @property
     def recipientImageURL(self):
         try:
-            img2 = self.recipient_image.url
+            img = self.recipient_image.url
         except:
-            img2 = ''
-        return img2
+            img = ''
+        return img
 
 
 class Billing(models.Model):
+
+    STATUS_TYPE = (
+        ('Paid','Paid'),
+        ('Unpaid','Unpaid'),
+    )
+
     billing_id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True,  editable=False)
     order_id = models.OneToOneField(Order, on_delete=models.CASCADE)
     total_amount = models.DecimalField(max_digits=10, decimal_places=2)
+    status = models.CharField(max_length=50,choices=STATUS_TYPE, default='Unpaid')
 
     def __str__(self):
         return self.order_id.order_id

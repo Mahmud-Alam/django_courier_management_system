@@ -1,0 +1,1 @@
+web: gunicorn django_courier_management_system.wsgi --log-file -

@@ -15,7 +15,7 @@
     <main class="projects">
         <section class="top-padding-max">
             <div class="container">
-                <h2 style="text-align: center;">{{order.order_id}} Details</h2><hr><br><br>
+                <h2 style="text-align: center;">{{order.order_id}} Details</h2><hr><br>
                 <div class="grid grid--three">
                     <div class="column">
                         <h2 style="text-align: center;">Customer Info</h2>
@@ -53,7 +53,7 @@
                     <div class="column">
                         <h2  style="text-align: center;">Billing Info</h2>
                         <div class="card project">
-                            <a href="#" class="card-a project">
+                            <a href="" class="card-a project">
                                 <!-- <img class="project__thumbnail" src="{{order.recipientImageURL}}" alt="project thumbnail" /> -->
                                 <div class="card__body">
                                     <h3 class="project__title" style="text-align: center;">
@@ -72,6 +72,10 @@
                                     <h4><span style="font-weight: bold;">Sum Amount: </span> <span>{{amount}}</span></h4>
                                     <h4><span style="font-weight: bold;">% VAT: </span> <span>{{vat}}%</span></h4><hr>
                                     <h4><span style="font-weight: bold;">Total Amount: </span> <span>{{total_amount}}</span></h4>
+                                    <div>
+                                        <a href="{% url 'update-order-form' order.order_id%}" class="btn btn--sub" >Edit</a>
+                                        <a href="{% url 'delete-order-form' order.order_id%}" class="btn btn--sub" >Delete</a>
+                                    </div>
                                 </div>
                             </a>
                         </div>

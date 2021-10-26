@@ -10,26 +10,35 @@
 <body>
     
     {% block content %}
-    <div class="container top-padding">
-        <h1>Billing Details:</h1><hr>
-        <h3>Order-Id : {{currId}}</h3>
-        <form action="" method="POST" style="width: 100%; display: flex; justify-content: space-between;">
-            {% csrf_token %}
-            <div>
-                <h4>Quantity        : {{quantity}}</h4>
-                <h4>Packaging Charge: {{packCharge}}</h4>
-                <h4>Delivery Charge : {{delCharge}}</h4><hr>
-                <h4>Sum Amount      : {{amount}}</h4>
-                <h4>% VAT           : {{vat}}%</h4><hr>
-                <h4>Total Amount    : {{total_amount}}</h4>
+    <main class="formPage top-padding-max">
+        <div class="container">
+            <div class="formWrapper">
+                <h2 style="text-align: center;">Billing Form: {{currId}}</h2>
+                <!-- <a class="backButton" href="{% url 'update-order-form' pk=currId %}"><i class="im im-angle-left"></i></a> -->
+                <br><br>
+                <div style="width: 100%; display: flex; justify-content: space-around;">
+                    <div>
+                        <h4>Quantity        : {{quantity}}</h4>
+                        <h4>Packaging Charge: {{packCharge}}</h4>
+                        <h4>Delivery Charge : {{delCharge}}</h4><hr>
+                        <h4>Sum Amount      : {{amount}}</h4>
+                        <h4>% VAT           : {{vat}}%</h4><hr>
+                        <h4>Total Amount    : {{total_amount}}</h4>
+                    </div>
+                    <form class="form" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% for field in form %}
+                        <div class="form__field">
+                            <label for="formInput#text">{{field.label}}</label>
+                            {{field}}
+                        </div>
+                        {% endfor %}
+                        <input class="btn btn--sub btn--lg  my-md" type="submit" value="Submit" />
+                    </form>
+                </div>
             </div>
-            <div>
-                <h3>Billing Details:</h3>
-                {{form.as_p}}
-                <input type="submit" value="Submit">
-            </div>
-        </form>
         </div>
+    </main>
     
     {% endblock content %}
 

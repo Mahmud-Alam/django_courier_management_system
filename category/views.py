@@ -28,13 +28,24 @@ def courierDetails(req):
 
 def createOrder(req):
     form = OrderForm()
-    nextId = 'ord-1'
+    nextId = 'Order-1'
     if Order.objects.exists():
-        nextId = 'ord-'+str(int(str(Order.objects.latest('order_id')).split("-")[-1])+1)   
-    #print(nextId,type(nextId))
+        nextId = 'Order-'+str(int(str(Order.objects.latest('created')).split("-")[-1])+1)   
+        print(Order.objects.latest('order_id'))
+
+        # nList = [int(i.order_id.split("-")[-1]) for i in Order.objects.all()]
+        # nList.sort()
+        # next=1
+        # for i in range(1,len(nList)+2):
+        #     if i not in nList:
+        #         next=i
+        #         break
+        # nextId = 'Order-'+str(next)
+        
+        #Order.objects.latest('created')
 
     if  req.method=='POST':   
-        form = OrderForm(req.POST)
+        form = OrderForm(req.POST, req.FILES)
         if form.is_valid():
             form.save()
             return redirect('billing-form')
@@ -62,7 +73,7 @@ def updateOrder(req, pk):
     order = Order.objects.get(order_id=pk)
     form = OrderForm(instance=order)
     if  req.method=='POST':
-        form = OrderForm(req.POST, instance=order)
+        form = OrderForm(req.POST, req.FILES, instance=order)
         if form.is_valid():
             form.save()
             #return redirect('update-billing-form')
@@ -82,10 +93,11 @@ def deleteOrder(req, pk):
 
 def createBilling(req):
     form = BillingForm()
-    currId = 'order-1'
+    currId = 'Order-1'
     
     if Order.objects.exists():
-        currId = str(Order.objects.latest('order_id'))
+        currId = str(Order.objects.latest('created'))
+        print(currId)
     
     category = Order.objects.get(order_id=currId).category
     packCharge = category.packaging_charge

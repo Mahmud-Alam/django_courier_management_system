@@ -10,15 +10,39 @@
 <body>
     
     {% block content %}
-    <div class="container top-padding">
+    <!-- <div class="container top-padding">
         <h1>Order Form:</h1><hr>
-        <form action="" method="POST">
+        <form action="" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <h2>Order-Id : {{nextId}}</h2>
             {{form.as_p}}
             <input type="submit" value="Submit">
         </form>
-    </div>
+    </div> -->
+
+
+    <!-- Main Section -->
+    <main class="formPage top-padding-max">
+        <div class="content-box" style="margin-bottom: 50px;">
+            <div class="formWrapper">
+                <h2 style="text-align: center;">Order Form: {{nextId}}</h2>
+                <a class="backButton" href="{% url 'courier-details' %}"><i class="im im-angle-left"></i></a>
+                <br>
+
+                <form class="form" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% for field in form %}
+                    <div class="form__field">
+                        <label for="formInput#text">{{field.label}}</label>
+                        {{field}}
+                    </div>
+                    {% endfor %}
+                    <input class="btn btn--sub btn--lg  my-md" type="submit" value="Next to Billing form" />
+                </form>
+            </div>
+        </div>
+    </main>
+
     {% endblock content %}
 
 </body>

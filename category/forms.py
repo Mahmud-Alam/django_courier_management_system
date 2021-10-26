@@ -8,8 +8,20 @@ class OrderForm(ModelForm):
         fields = '__all__'
         #exclude = ['order_id']
 
+    def  __init__(self, *args, **kwargs):
+        super(OrderForm, self).__init__(*args, **kwargs)
+
+        for key, value in self.fields.items():
+            value.widget.attrs.update({'class':'input'})
+
 class BillingForm(ModelForm):
     class Meta:
         model = Billing
         fields = '__all__'
+    
+    def  __init__(self, *args, **kwargs):
+        super(BillingForm, self).__init__(*args, **kwargs)
+
+        for key, value in self.fields.items():
+            value.widget.attrs.update({'class':'input'})
 

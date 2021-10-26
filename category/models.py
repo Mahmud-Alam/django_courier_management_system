@@ -62,6 +62,8 @@ class Order(models.Model):
     recipient_address = models.TextField(null=True,blank=True)
     recipient_gender = models.CharField(max_length=50,choices=GENDER_TYPE, null=True,blank=True)
     delivery_date  = models.DateField(("Date"), default=date.today)
+    created = models.DateTimeField(auto_now_add=True) #save time once when created
+    updated = models.DateTimeField(auto_now=True) #save time every time when updated
     
     def __str__(self):
         return self.order_id
